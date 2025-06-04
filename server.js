@@ -11,7 +11,7 @@ const posts = [
     title: "Top 5 AI Tools to Boost Productivity",
     category: "Tech",
     content: "Discover the latest AI-powered tools that help automate tasks, improve efficiency, and increase productivity in both personal and professional life.",
-    image: "http://localhost:5000/ai-tools.webp"
+    image: "https://edure.in/wp-content/uploads/2025/02/ai-tools.webp"
   },
   {
     id: 2,
@@ -25,21 +25,21 @@ const posts = [
     title: "The Future of Web Development in 2025",
     category: "Tech",
     content: "Explore upcoming trends in frontend, backend, and full-stack development — including frameworks, tooling, and performance tips.",
-    image: "http://localhost:5000/top-web-development-trends.webp"
+    image: "https://tse2.mm.bing.net/th/id/OIP.wjslWBSObcdz7RPwPzKqugHaDt?rs=1&pid=ImgDetMain"
   },
   {
     id: 4,
     title: "How to Create a Minimalist Workspace",
     category: "Lifestyle",
     content: "Transform your workspace into a calm and productive environment with minimalist design principles and clever space-saving hacks.",
-    image: "https://images.unsplash.com/photo-1516382799247-7e8e8db7d7e7?auto=format&fit=crop&w=800&q=60"
+    image: "https://tse1.mm.bing.net/th/id/OIP.niGCu6yFwmbGmihXM0RV-QHaHJ?rs=1&pid=ImgDetMain"
   },
   {
     id: 5,
     title: "Understanding Neural Networks with Visual Examples",
     category: "Tech",
     content: "A beginner-friendly introduction to neural networks using visual diagrams and real-world analogies to explain how they work.",
-    image: "https://images.unsplash.com/photo-1581092333703-22002b2f6c29?auto=format&fit=crop&w=800&q=60"
+    image: "https://images.theconversation.com/files/374303/original/file-20201210-18-elk4m.jpg?ixlib=rb-1.1.0&rect=0,22,7500,5591&q=45&auto=format&w=926&fit=clip"
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ const posts = [
     title: "Healthy Eating on a Busy Schedule",
     category: "Lifestyle",
     content: "Practical tips and quick recipes to maintain a healthy diet even when you have little time to cook or plan meals.",
-    image: "https://images.unsplash.com/photo-1532634726-8b9fb99825c7?auto=format&fit=crop&w=800&q=60"
+    image: "http://localhost:5000/images/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
   }
 ];
 
