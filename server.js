@@ -11,21 +11,21 @@ const posts = [
     title: "Top 5 AI Tools to Boost Productivity",
     category: "Tech",
     content: "Discover the latest AI-powered tools that help automate tasks, improve efficiency, and increase productivity in both personal and professional life.",
-    image: "https://images.unsplash.com/photo-1581092580495-0e8e6b0e5de9?auto=format&fit=crop&w=800&q=60"
+    image: "http://localhost:5000/ai-tools.webp"
   },
   {
     id: 2,
     title: "10 Morning Habits for a Healthier Lifestyle",
     category: "Lifestyle",
     content: "Start your day right with these scientifically backed morning habits that can elevate your mood, energy, and overall well-being.",
-    image: "https://images.unsplash.com/photo-1504198458649-3128b932f49b?auto=format&fit=crop&w=800&q=60"
+    image: "http://localhost:5000/images/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
   },
   {
     id: 3,
     title: "The Future of Web Development in 2025",
     category: "Tech",
     content: "Explore upcoming trends in frontend, backend, and full-stack development — including frameworks, tooling, and performance tips.",
-    image: "https://images.unsplash.com/photo-1531497865144-0464ef8fbf2b?auto=format&fit=crop&w=800&q=60"
+    image: "http://localhost:5000/top-web-development-trends.webp"
   },
   {
     id: 4,
@@ -64,7 +64,7 @@ const posts = [
   }
 ];
 
-app.get('/api/posts', (req, res) => {
+app.get('https://blog-page-sepia-xi.vercel.app//api/posts', (req, res) => {
   const category = req.query.category;
   if (category) {
     const filtered = posts.filter(post => post.category === category);
@@ -74,7 +74,7 @@ app.get('/api/posts', (req, res) => {
   }
 });
 
-app.get('/api/posts/:id', (req, res) => {
+app.get('https://blog-page-sepia-xi.vercel.app//api/posts/:id', (req, res) => {
   const post = posts.find(p => p.id == req.params.id);
   if (post) res.json(post);
   else res.status(404).json({ message: "Post not found" });
@@ -88,7 +88,7 @@ const fs = require("fs");
 
 const uploadDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
-app.use("/uploads", express.static(uploadDir));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const storage = multer.diskStorage({
 	destination: uploadDir,
@@ -99,7 +99,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Modified POST route
-app.post("/api/posts", upload.single("image"), (req, res) => {
+app.post("https://blog-page-sepia-xi.vercel.app//api/posts", upload.single("image"), (req, res) => {
 	const { title, content, category } = req.body;
 	const imagePath = req.file ? `http://localhost:${PORT}/uploads/${req.file.filename}` : null;
 	console.log("Image saved at:", imagePath);

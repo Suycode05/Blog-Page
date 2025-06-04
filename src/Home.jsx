@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import "./index.css";
 import { Listbox } from "@headlessui/react";
@@ -13,27 +13,28 @@ const App = () => {
 	const [selectedPost, setSelectedPost] = useState(null);
 	const [loading, setLoading] = useState(false);
 
-	const fetchPosts = async () => {
+	const fetchPosts = useCallback(async () => {
 		setLoading(true);
 		try {
 			const res = await axios.get(
-				`/api/posts${category ? `?category=${category}` : ""}`
+				`https://blog-page-sepia-xi.vercel.app//api/posts${category ? `?category=${category}` : ""}`
 			);
+			console.log("Response data:", res.data);
 			setPosts(res.data);
 		} catch (err) {
 			console.error("Error fetching posts:", err);
 		} finally {
 			setLoading(false);
 		}
-	};
+	}, [category]);
 	useEffect(() => {
 		fetchPosts();
-	}, [category]);
+	}, [fetchPosts]);
 
 	const fetchSinglePost = async (id) => {
 		setLoading(true);
 		try {
-			const res = await axios.get(`/api/posts/${id}`);
+			const res = await axios.get(`https://blog-page-sepia-xi.vercel.app//api/posts/${id}`);
 			setSelectedPost(res.data);
 		} catch (err) {
 			console.error("Error fetching post:", err);

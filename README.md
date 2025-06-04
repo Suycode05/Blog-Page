@@ -1,3 +1,5 @@
+website url:-https://blog-page-sepia-xi.vercel.app/
+
 📝 Mini Blog Platform
 A simple full-stack blog platform where users can view posts, filter by category, and read individual articles. Built with a modern tech stack and designed for learning and rapid prototyping.
 
