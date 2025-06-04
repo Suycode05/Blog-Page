@@ -11,7 +11,7 @@ export default function handler(req, res) {
     title: "10 Morning Habits for a Healthier Lifestyle",
     category: "Lifestyle",
     content: "Start your day right with these scientifically backed morning habits that can elevate your mood, energy, and overall well-being.",
-    image: "http://localhost:5000/images/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
+    image: "https://medicircle.in/uploads/2021/march2021/top-3-life-hacks-you-must-follow-lifestyle-management-tips.jpg"
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ export default function handler(req, res) {
     title: "Healthy Eating on a Busy Schedule",
     category: "Lifestyle",
     content: "Practical tips and quick recipes to maintain a healthy diet even when you have little time to cook or plan meals.",
-    image: "http://localhost:5000/images/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
+    image: "https://medicircle.in/uploads/2021/march2021/top-3-life-hacks-you-must-follow-lifestyle-management-tips.jpg"
   }];
   const id = parseInt(req.query.id);
   const post = posts.find(p => p.id === id);
