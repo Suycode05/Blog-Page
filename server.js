@@ -64,7 +64,7 @@ const posts = [
   }
 ];
 
-app.get('https://blog-page-sepia-xi.vercel.app//api/posts', (req, res) => {
+app.get('https://blog-page-sepia-xi.vercel.app/api/posts', (req, res) => {
   const category = req.query.category;
   if (category) {
     const filtered = posts.filter(post => post.category === category);
@@ -74,7 +74,7 @@ app.get('https://blog-page-sepia-xi.vercel.app//api/posts', (req, res) => {
   }
 });
 
-app.get('https://blog-page-sepia-xi.vercel.app//api/posts/:id', (req, res) => {
+app.get('https://blog-page-sepia-xi.vercel.app/api/posts/:id', (req, res) => {
   const post = posts.find(p => p.id == req.params.id);
   if (post) res.json(post);
   else res.status(404).json({ message: "Post not found" });
@@ -99,7 +99,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Modified POST route
-app.post("https://blog-page-sepia-xi.vercel.app//api/posts", upload.single("image"), (req, res) => {
+app.post("https://blog-page-sepia-xi.vercel.app/api/posts", upload.single("image"), (req, res) => {
 	const { title, content, category } = req.body;
 	const imagePath = req.file ? `http://localhost:${PORT}/uploads/${req.file.filename}` : null;
 	console.log("Image saved at:", imagePath);
