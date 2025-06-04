@@ -17,12 +17,20 @@ const App = () => {
 		setLoading(true);
 		try {
 			const res = await axios.get(
-				`https://blog-page-sepia-xi.vercel.app//api/posts${category ? `?category=${category}` : ""}`
+				`https://blog-page-sepia-xi.vercel.app//api/posts${
+					category ? `?category=${category}` : ""
+				}`
 			);
 			console.log("Response data:", res.data);
-			setPosts(res.data);
+			if (Array.isArray(res.data)) {
+				setPosts(res.data);
+			} else {
+				setPosts([]); // fallback in case data is not an array
+				console.error("Expected an array but got:", res.data);
+			}
 		} catch (err) {
 			console.error("Error fetching posts:", err);
+			setPosts([]);
 		} finally {
 			setLoading(false);
 		}
@@ -34,7 +42,9 @@ const App = () => {
 	const fetchSinglePost = async (id) => {
 		setLoading(true);
 		try {
-			const res = await axios.get(`https://blog-page-sepia-xi.vercel.app//api/posts/${id}`);
+			const res = await axios.get(
+				`https://blog-page-sepia-xi.vercel.app//api/posts/${id}`
+			);
 			setSelectedPost(res.data);
 		} catch (err) {
 			console.error("Error fetching post:", err);
@@ -110,28 +120,32 @@ const App = () => {
 					</div>
 				) : (
 					<div className="flex flex-col gap-6">
-						{posts.map((post) => (
-							<div
-								key={post.id}
-								onClick={() => fetchSinglePost(post.id)}
-								className="cursor-pointer rounded-xl overflow-hidden bg-gradient-to-r from-blue-900 to-indigo-800 shadow-lg hover:shadow-cyan-500/50 transform hover:scale-[1.02] transition-all duration-300 ease-in-out border border-blue-700 hover:border-cyan-500"
-							>
-								<img
-									src={
-										post.image ||
-										"https://via.placeholder.com/600x300?text=Blog+Image"
-									}
-									alt={post.title}
-									className="w-full h-60 object-cover transition-transform duration-300 hover:scale-105"
-								/>
+						{Array.isArray(posts) && posts.length > 0 ? (
+							posts.map((post) => (
+								<div
+									key={post.id}
+									onClick={() => fetchSinglePost(post.id)}
+									className="cursor-pointer rounded-xl overflow-hidden bg-gradient-to-r from-blue-900 to-indigo-800 shadow-lg hover:shadow-cyan-500/50 transform hover:scale-[1.02] transition-all duration-300 ease-in-out border border-blue-700 hover:border-cyan-500"
+								>
+									<img
+										src={
+											post.image ||
+											"https://via.placeholder.com/600x300?text=Blog+Image"
+										}
+										alt={post.title}
+										className="w-full h-60 object-cover transition-transform duration-300 hover:scale-105"
+									/>
 
-								<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-									<h2 className="text-white text-lg font-semibold">
-										{post.title}
-									</h2>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+										<h2 className="text-white text-lg font-semibold">
+											{post.title}
+										</h2>
+									</div>
 								</div>
-							</div>
-						))}
+							))
+						) : (
+							<p className="text-center text-slate-400">No posts available.</p>
+						)}
 					</div>
 				)}
 			</div>
