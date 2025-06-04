@@ -11,7 +11,7 @@ export default function handler(req, res) {
     title: "10 Morning Habits for a Healthier Lifestyle",
     category: "Lifestyle",
     content: "Start your day right with these scientifically backed morning habits that can elevate your mood, energy, and overall well-being.",
-    image: "./public/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
+    image: "https://medicircle.in/uploads/2021/march2021/top-3-life-hacks-you-must-follow-lifestyle-management-tips.jpg"
   },
   {
     id: 3,
