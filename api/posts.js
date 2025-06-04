@@ -4,14 +4,14 @@ export default function handler(req, res) {
     title: "Top 5 AI Tools to Boost Productivity",
     category: "Tech",
     content: "Discover the latest AI-powered tools that help automate tasks, improve efficiency, and increase productivity in both personal and professional life.",
-    image: "http://localhost:5000/ai-tools.webp"
+    image: "./public/ai-tools.webp"
   },
   {
     id: 2,
     title: "10 Morning Habits for a Healthier Lifestyle",
     category: "Lifestyle",
     content: "Start your day right with these scientifically backed morning habits that can elevate your mood, energy, and overall well-being.",
-    image: "http://localhost:5000/images/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
+    image: "./public/vecteezy_balance-and-healthy-lifestyle-with-people-exercising_.jpg"
   },
   {
     id: 3,
