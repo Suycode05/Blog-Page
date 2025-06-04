@@ -1,12 +1,5 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const PORT = 5000;
-
-app.use(cors());
-
-const posts = [
-  {
+export default function handler(req, res) {
+  const posts = [{
     id: 1,
     title: "Top 5 AI Tools to Boost Productivity",
     category: "Tech",
@@ -61,55 +54,8 @@ const posts = [
     category: "Lifestyle",
     content: "Practical tips and quick recipes to maintain a healthy diet even when you have little time to cook or plan meals.",
     image: "https://images.unsplash.com/photo-1532634726-8b9fb99825c7?auto=format&fit=crop&w=800&q=60"
-  }
-];
-
-app.get('/api/posts', (req, res) => {
-  const category = req.query.category;
-  if (category) {
-    const filtered = posts.filter(post => post.category === category);
-    res.json(filtered);
-  } else {
-    res.json(posts);
-  }
-});
-
-app.get('/api/posts/:id', (req, res) => {
-  const post = posts.find(p => p.id == req.params.id);
-  if (post) res.json(post);
-  else res.status(404).json({ message: "Post not found" });
-});
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
-
-const uploadDir = path.join(__dirname, "uploads");
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
-app.use(express.static(path.join(__dirname, 'public')));
-
-const storage = multer.diskStorage({
-	destination: uploadDir,
-	filename: (req, file, cb) => {
-		cb(null, Date.now() + path.extname(file.originalname));
-	},
-});
-const upload = multer({ storage });
-
-// Modified POST route
-app.post("/api/posts", upload.single("image"), (req, res) => {
-	const { title, content, category } = req.body;
-	const imagePath = req.file ? `http://localhost:${PORT}/uploads/${req.file.filename}` : null;
-	console.log("Image saved at:", imagePath);
-  const newPost = {
-		id: Date.now(), // fallback for generateUniqueId()
-		title,
-		content,
-		category,
-		image: imagePath,
-	};
-	posts.push(newPost);
-	res.status(201).json(newPost);
-});
+  }]; // your post data
+  const { category } = req.query;
+  const filtered = category ? posts.filter(p => p.category === category) : posts;
+  res.status(200).json(filtered);
+}

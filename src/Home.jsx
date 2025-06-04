@@ -17,7 +17,7 @@ const App = () => {
 		setLoading(true);
 		try {
 			const res = await axios.get(
-				`https://blog-page-sepia-xi.vercel.app/api/posts${
+				`/api/posts${
 					category ? `?category=${category}` : ""
 				}`
 			);
@@ -43,7 +43,7 @@ const App = () => {
 		setLoading(true);
 		try {
 			const res = await axios.get(
-				`https://blog-page-sepia-xi.vercel.app/api/posts/${id}`
+				`/api/posts/${id}`
 			);
 			setSelectedPost(res.data);
 		} catch (err) {
